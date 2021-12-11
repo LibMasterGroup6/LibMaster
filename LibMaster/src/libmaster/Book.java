@@ -42,7 +42,7 @@ public class Book extends javax.swing.JFrame {
          {
               String host ="jdbc:oracle:thin:@localhost:1521:orcl";
               String Name="Eng_Dania";
-              String password="123456";
+              String password="11820498";
               con = DriverManager.getConnection(host, Name, password);
               con = DriverManager.getConnection(host, Name, password);
               S=con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_UPDATABLE);
@@ -188,35 +188,15 @@ public class Book extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Javanese Text", 0, 16)); // NOI18N
         jLabel5.setText("Sign out");
-        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel5MouseClicked(evt);
-            }
-        });
 
         jLabel6.setFont(new java.awt.Font("Javanese Text", 0, 16)); // NOI18N
         jLabel6.setText("Search");
-        jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel6MouseClicked(evt);
-            }
-        });
 
         jLabel7.setFont(new java.awt.Font("Javanese Text", 0, 16)); // NOI18N
         jLabel7.setText("Profile");
-        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel7MouseClicked(evt);
-            }
-        });
 
         jLabel8.setFont(new java.awt.Font("Javanese Text", 0, 16)); // NOI18N
         jLabel8.setText("Home");
-        jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel8MouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -277,86 +257,7 @@ public class Book extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel8MouseClicked
- private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {                                     
-        // TODO add your handling code here:
-        
-        login_Fr ff= new login_Fr();
-        ff.setVisible(true);
-        dispose();
-       
-        
-    }                                    
-
-    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
-        
-        personal p =new personal(email);
-        p.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_jLabel7MouseClicked
-
-    private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
-        search s=new search(email);
-        s.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_jLabel6MouseClicked
-
-    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
-        login_Fr l=new login_Fr(email);
-        l.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_jLabel5MouseClicked
-
    
-          try {
-            // TODO add your handling code here:
-         
-             DefaultTableModel t=(DefaultTableModel)jTable1.getModel();
-             int index=jTable1.getSelectedRow();
-            
-         
-       String SQL="INSERT INTO Buy_r(Book_name,Book_ID,Price,Email_U) " 
-                       + "VALUES(?,?,?,?)";  
-             
-               pst.setString(1,String.valueOf(t.getValueAt(index,0)));
-               pst.setString(2,String.valueOf(t.getValueAt(index,1)));
-                 pst.setInt(3,0);//price
-               pst.setString(4,login_Fr.Em);
-             
-                pst.executeUpdate();
-          
-        } catch (SQLException ex) {
-          
-        }
-        
-    }//GEN-LAST:event_jButton1MouseClicked
-     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        // TODO add your handling code here:
-        
-     try {
-            // TODO add your handling code here:
-     
-             DefaultTableModel t=(DefaultTableModel)jTable1.getModel();
-            
-            
-         
-       String SQL="INSERT INTO Borrow _r(Book_name,Book_ID,Price,Email_U) " 
-                       + "VALUES(?,?,?,?)";  
-        int index=jTable1.getSelectedRow();
-             
-               pst.setString(1,String.valueOf(t.getValueAt(index,0)));
-               pst.setString(2,String.valueOf(t.getValueAt(index,1)));
-                 pst.setInt(3,0);//price
-               pst.setString(4,login_Fr. jTextField2.getText());
-             
-                pst.executeUpdate();
-          
-        } catch (SQLException ex) {
-          
-        }
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

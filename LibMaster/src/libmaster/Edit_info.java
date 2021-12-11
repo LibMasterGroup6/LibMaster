@@ -390,7 +390,7 @@ public class Edit_info extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null,"invalid");
             }
         } catch (SQLException ex) {
-            Logger.getLogger(USER_.class.getName()).log(Level.SEVERE, null, ex);
+           // Logger.getLogger(USER_.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton4ActionPerformed
 

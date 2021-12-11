@@ -62,7 +62,6 @@ public class login_Fr extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -74,16 +73,6 @@ public class login_Fr extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jPasswordField1 = new javax.swing.JPasswordField();
-
-        jButton1.setBackground(new java.awt.Color(0, 0, 0));
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Sign in");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -172,7 +161,7 @@ public class login_Fr extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
@@ -227,79 +216,101 @@ public class login_Fr extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
-           Register_Fr rf=new Register_Fr();
-           rf.setVisible(true);
-           this.setVisible(false);
-    }//GEN-LAST:event_jLabel6MouseClicked
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-   
-       
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+        recovery1 r1=new recovery1();
+        r1.setVisible(true);
+    }//GEN-LAST:event_jLabel5MouseClicked
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
-        recovery1 r1=new recovery1();
-        r1.setVisible(true);  
-    }//GEN-LAST:event_jLabel5MouseClicked
-
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
-       
+
         email =String.valueOf(jTextField2.getText());
         pass=String.valueOf(jPasswordField1.getText());
-        
-        try 
+
+        try
         {
             String SQL="Select * From User_";
             R=S.executeQuery(SQL);
-                
-            
+
             while(R.next())
             {
-               System.out.print(R.getInt("Admin"));
+                System.out.print(R.getInt("Admin"));
                 if(email.equals(R.getString("Email"))&&pass.equals(R.getString("PASSWORD_"))&&R.getInt("Admin")==1)
-                {     
-                     bookadmin ba=new bookadmin(email);
-                     ba.setVisible(true);
-                     this.setVisible(false);
-                     System.out.println("Hi");
-                     break;
-                    
+                {
+                    bookadmin ba=new bookadmin(email);
+                    ba.setVisible(true);
+                    this.setVisible(false);
+                    System.out.println("Hi");
+                    break;
+
                 }
-                
+
                 if(email.equals(R.getString("Email"))&&pass.equals(R.getString("PASSWORD_"))&&R.getInt("Admin")==0)
                 {
-                     Em=email;
-                     Book b=new Book(email);
-                     b.setVisible(true);
-                     this.setVisible(false);
-                     System.out.println("Hi");
-                     break;
-                    
+                    Em=email;
+                    Book b=new Book(email);
+                    b.setVisible(true);
+                    this.setVisible(false);
+                    System.out.println("Hi");
+                    break;
+
                 }
-                
-              
-              }
+
+            }
         }
-    catch (SQLException ex) 
-    {
-        ex.printStackTrace();
-    }
+        catch (SQLException ex)
+        {
+            ex.printStackTrace();
+        }
+
     
-    
-   
-        
-        
+
     }//GEN-LAST:event_jButton2MouseClicked
 
+    
+    private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
+        Register_Fr rf=new Register_Fr();
+        rf.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jLabel6MouseClicked
 
+
+        public static void main(String args[]) {
+            /* Set the Nimbus look and feel */
+            //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+            /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+            * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
+            */
+            try {
+                for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                    if ("Nimbus".equals(info.getName())) {
+                        javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                        break;
+                    }
+                }
+            } catch (ClassNotFoundException ex) {
+                java.util.logging.Logger.getLogger(Edit_info.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            } catch (InstantiationException ex) {
+                java.util.logging.Logger.getLogger(Edit_info.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            } catch (IllegalAccessException ex) {
+                java.util.logging.Logger.getLogger(Edit_info.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+                java.util.logging.Logger.getLogger(Edit_info.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            }
+            //</editor-fold>
+
+            /* Create and display the form */
+            java.awt.EventQueue.invokeLater(new Runnable() {
+                public void run() {
+                    login_Fr f=new login_Fr ("");
+                    f.setVisible(true);
+                }
+            });
+        }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

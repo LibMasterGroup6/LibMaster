@@ -194,7 +194,7 @@ public class Register_Fr extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-      login_Fr lf=new login_Fr();
+      login_Fr lf=new login_Fr("");
       lf.setVisible(true);
       this.setVisible(false);
     }//GEN-LAST:event_jButton1MouseClicked

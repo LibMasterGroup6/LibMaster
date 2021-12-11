@@ -188,12 +188,27 @@ public class Book extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Javanese Text", 0, 16)); // NOI18N
         jLabel5.setText("Sign out");
+        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel5MouseClicked(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Javanese Text", 0, 16)); // NOI18N
         jLabel6.setText("Search");
+        jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel6MouseClicked(evt);
+            }
+        });
 
         jLabel7.setFont(new java.awt.Font("Javanese Text", 0, 16)); // NOI18N
         jLabel7.setText("Profile");
+        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel7MouseClicked(evt);
+            }
+        });
 
         jLabel8.setFont(new java.awt.Font("Javanese Text", 0, 16)); // NOI18N
         jLabel8.setText("Home");
@@ -275,28 +290,25 @@ public class Book extends javax.swing.JFrame {
         
     }                                    
 
-    private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {                                     
-        // TODO add your handling code here:
-        search ss= new search();
-        ss.setVisible(true);
-        dispose();
-    }                                    
+    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
+        
+        personal p =new personal(email);
+        p.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jLabel7MouseClicked
 
-    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {                                     
-        // TODO add your handling code here:
-        personal pp= new personal();
-        pp.setVisible(true);
-        dispose();
-    }                                    
+    private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
+        search s=new search(email);
+        s.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jLabel6MouseClicked
 
-    private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {                                     
-        // TODO add your handling code here:
-        Book b= new Book();
-        b.setVisible(true);
-        dispose();
-    }              
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        // TODO add your handling code here:
+    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+        login_Fr l=new login_Fr(email);
+        l.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jLabel5MouseClicked
+
    
           try {
             // TODO add your handling code here:

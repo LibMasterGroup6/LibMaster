@@ -38,7 +38,7 @@ public class login_Fr extends javax.swing.JFrame {
               
              String host ="jdbc:oracle:thin:@localhost:1521:orcl";
              String Name="Eng_Dania";
-             String password="11820498";
+             String password="123456";
              con = DriverManager.getConnection(host, Name, password);
              S=con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_UPDATABLE);
              
@@ -91,6 +91,11 @@ public class login_Fr extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setPreferredSize(new java.awt.Dimension(288, 438));
+        jPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel2MouseClicked(evt);
+            }
+        });
 
         jLabel1.setIcon(new ImageIcon("p1.jpg"));
 
@@ -104,6 +109,11 @@ public class login_Fr extends javax.swing.JFrame {
 
         jLabel4.setForeground(new java.awt.Color(96, 64, 32));
         jLabel4.setText("Not a member?");
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
+        });
 
         jLabel6.setForeground(new java.awt.Color(96, 64, 32));
         jLabel6.setText("Register Now!");
@@ -172,7 +182,7 @@ public class login_Fr extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
@@ -246,6 +256,7 @@ public class login_Fr extends javax.swing.JFrame {
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
         recovery1 r1=new recovery1();
         r1.setVisible(true);  
+        this.setVisible(false);
     }//GEN-LAST:event_jLabel5MouseClicked
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
@@ -261,27 +272,14 @@ public class login_Fr extends javax.swing.JFrame {
             
             while(R.next())
             {
-               System.out.print(R.getInt("Admin"));
-                if(email.equals(R.getString("Email"))&&pass.equals(R.getString("PASSWORD_"))&&R.getInt("Admin")==1)
+                if(email.equals(R.getString("Email"))&&pass.equals(R.getString("PASSWORD_")))
                 {
-                     bookadmin ba=new bookadmin(email);
-                     ba.setVisible(true);
-                     this.setVisible(false);
-                     System.out.println("Hi");
-                     break;
-                    
-                }
-                
-                if(email.equals(R.getString("Email"))&&pass.equals(R.getString("PASSWORD_"))&&R.getInt("Admin")==0)
-                {
-                     Book b=new Book(email);
+                     Book b=new Book(email,R.getInt("Admin"));
                      b.setVisible(true);
                      this.setVisible(false);
-                     System.out.println("Hi");
                      break;
                     
-                }
-                
+                } 
               
               }
         }
@@ -296,34 +294,18 @@ public class login_Fr extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton2MouseClicked
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(login_Fr.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(login_Fr.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(login_Fr.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(login_Fr.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+        Register_Fr r=new Register_Fr();
+        r.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jLabel4MouseClicked
 
-        /* Create and display the form */
+    private void jPanel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPanel2MouseClicked
+
+     public static void main(String args[]) {
+     
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new login_Fr().setVisible(true);

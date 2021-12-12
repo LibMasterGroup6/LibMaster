@@ -17,7 +17,7 @@ import javax.swing.JOptionPane;
 
 
 
-public class recovery1 extends javax.swing.JFrame {
+public class confirm extends javax.swing.JFrame {
 
    public String email;
    Connection con;
@@ -25,14 +25,19 @@ public class recovery1 extends javax.swing.JFrame {
    PreparedStatement pst;
    ResultSet R;
    public int code;
+   String newpass;
+   String Address;
+   String pass ;
+   String phone;
     
    
    
-   public recovery1() 
+   public confirm(String email) 
    {
         initComponents();
-        email=new String();
-        this.setTitle("Mailer");
+        this.email=email;
+        
+        
         
          try {
               
@@ -50,6 +55,14 @@ public class recovery1 extends javax.swing.JFrame {
         
     }
 
+   public void setInfo(String Address,String pass,String newpass,String phone)
+   {
+       this.Address=Address;
+       this.pass=pass;
+       this.newpass=newpass;
+       this.phone=phone;
+
+   }
   
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -68,11 +81,11 @@ public class recovery1 extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(96, 64, 32));
-        jLabel1.setText("Reset Password");
+        jLabel1.setText("To update your information");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(96, 64, 32));
-        jLabel2.setText("What's your email,or username?");
+        jLabel2.setText("Enter your current password");
 
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -83,7 +96,7 @@ public class recovery1 extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(96, 64, 32));
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Send");
+        jButton1.setText("Confitm");
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton1MouseClicked(evt);
@@ -104,8 +117,8 @@ public class recovery1 extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
-                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(44, 44, 44))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -136,91 +149,44 @@ public class recovery1 extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+
+        if(jTextField1.getText().equals(pass))
+        {
+            this.setVisible(false);
+            
+            try
+            {
+                pst=con.prepareStatement("UPDATE  User_ SET Address='"+Address+"' Where Email='"+email+"'");
+                pst.executeUpdate();
+                
+                pst=con.prepareStatement("UPDATE  User_ SET Password_='"+newpass+"' Where Email='"+email+"'");
+                pst.executeUpdate();
+                
+                pst=con.prepareStatement("UPDATE  User_ SET Phone='"+phone+"' Where Email='"+email+"'");
+                pst.executeUpdate();
+                JOptionPane.showMessageDialog(confirm.this,"Done..."); 
+            }
+        catch(SQLException e)
+          { 
+            System.out.println(e);
+          }
+            
+           
+        }
+        
+        else
+        {
+            JOptionPane.showMessageDialog(confirm.this,"Password does not match"); 
+        }
+        
+        Edit_info e=new Edit_info (email);
+            e.setVisible(true);
+    }//GEN-LAST:event_jButton1MouseClicked
+
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
-
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-       email=String.valueOf( jTextField1.getText());
-       String m=new String();     
-       
-    try 
-    {
-        R=S.executeQuery("Select * from USER_ where EMAIL='"+email+"'");
-        Random ran = new Random();
-        int code = ran.nextInt(10000) + 5;
-        
-       while(R.next())
-       {
-           if(String.valueOf(R.getString(1)).equals(String.valueOf(email)))
-           {
-              m="Dear "+R.getString(2)+"\n"+"It appears that you are having difficulty remembering your password.\n" +
-                "This code will help you to reset your password:"+"\n" +code+"\n" +"If you want to change it, you can do so through your page on the site"+"\n"+"We thank you for writing to us\n" +
-                "Have a nice day";
-         
-        Properties props=new Properties();
-        props.put("mail.smtp.user","username"); 
-        props.put("mail.smtp.host", "smtp.gmail.com"); 
-        props.put("mail.smtp.port", "25"); 
-        props.put("mail.debug", "true"); 
-        props.put("mail.smtp.auth", "true"); 
-        props.put("mail.smtp.starttls.enable","true"); 
-        props.put("mail.smtp.EnableSSL.enable","true");
-        props.setProperty("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");   
-        props.setProperty("mail.smtp.socketFactory.fallback", "false");   
-        props.setProperty("mail.smtp.port", "465");   
-        props.setProperty("mail.smtp.socketFactory.port", "465"); 
-        
-        String myAcc="libmastersystem2021@gmail.com";
-        String myPass="jxszmhwmsezmlblf";
-        
-        Session session = Session.getDefaultInstance(props,  
-           new javax.mail.Authenticator()
-           {  
-               protected PasswordAuthentication getPasswordAuthentication()
-               {  
-                 return new PasswordAuthentication(myAcc,myPass);  
-               }  
-           });  
-       
-        
-         try
-         {  
-            MimeMessage message = new MimeMessage(session);  
-            message.setFrom(new InternetAddress(myAcc));  
-            message.addRecipient(Message.RecipientType.TO,new InternetAddress(email));  
-            message.setSubject("javatpoint");  
-            message.setText(m);  
-            Transport transport = session.getTransport("smtp"); 
-            transport.connect("smtp.gmail.com", myAcc, myPass);
-            Transport.send(message);  
-            transport.close();
-  
-           JOptionPane.showMessageDialog(recovery1.this,"message sent successfully...");  
-           recovery2 r2=new recovery2(email,code);
-           r2.setVisible(true);
-           this.setVisible(false);
-   
-       }
-      catch (MessagingException e) 
-       {
-         e.printStackTrace();
-       }    
-       }
-       
-      else JOptionPane.showMessageDialog(null,"Gmail is incorrect.");
-       }
-    } 
-    catch (SQLException ex) 
-    {
-        ex.printStackTrace();
-    }
-    
-    
-   
-        
-       
-    }//GEN-LAST:event_jButton1MouseClicked
 
    
     // Variables declaration - do not modify//GEN-BEGIN:variables

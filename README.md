@@ -54,8 +54,13 @@ https://drive.google.com/file/d/1WjluqvwqlC75ikvWgdMyMBQpuoGwqQ4p/view?usp=shari
 
 
 Last sprint :
+
+User Stories:
+https://docs.google.com/document/d/1EkOe7tx0md2YX1tTRKqR1oBaPWKd6EUg/edit?usp=sharing&ouid=112904180683091193469&rtpof=true&sd=true
+
+Daily meeting : Mhmad Draidi
 https://docs.google.com/document/d/1nqlpN3MRfFlPAQ3twZN_P8FVoot5AvNd/edit?fbclid=IwAR3_8eseHaLPQIPP04OIjCJ9VX4PLIYgTSfPLypZnB0VzUv9frqGUxnvAgI
-Mhmad Draidi
+
 
 
 
